@@ -21,6 +21,8 @@
     <None Include=".eslintrc" />
     <None Include=".lintstagedrc" />
     <None Include="Interop\DevExpress.Blazor.Interop.WASM\DevExpress.Blazor.Interop.WASM.csproj" />
+    <None Include="Pages\Error.cshtml" />
+    <Content Include="Pages\_Host.cshtml" />
 
     <Content Include="Images\Svg\**\*.svg" />
     <Content Include="Localization\*.tt" />
@@ -35,8 +37,14 @@
   <ItemGroup>
     <Compile Include="Data\WeatherForecast.cs" />
     <Compile Include="Data\WeatherForecastService.cs" />
+    <Compile Include="Pages\Error.cshtml.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Startup.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Shared\MainLayout.razor.css" />
+    <Content Include="Shared\NavMenu.razor.css" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.JSInterop.WebAssembly" Version="3.2.1" />
@@ -56,6 +64,11 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>DxBlazorLocalizerGenerator.tt</DependentUpon>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="wwwroot\css\bootstrap\" />
+    <Folder Include="wwwroot\css\open-iconic\font\css\" />
+    <Folder Include="wwwroot\css\open-iconic\font\fonts\" />
   </ItemGroup>
 
 </Project>
