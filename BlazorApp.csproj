@@ -20,7 +20,6 @@
     <None Include=".eslintignore" />
     <None Include=".eslintrc" />
     <None Include=".lintstagedrc" />
-    <None Include="Interop\DevExpress.Blazor.Interop.WASM\DevExpress.Blazor.Interop.WASM.csproj" />
     <None Include="Pages\Error.cshtml" />
     <Content Include="Pages\_Host.cshtml" />
 
@@ -35,8 +34,89 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Remove="Interop\DevExpress.Blazor.Interop.WASM\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Include="Data\WeatherForecast.cs" />
     <Compile Include="Data\WeatherForecastService.cs" />
+    <Compile Include="Interop\GlobalShim\Date.cs" />
+    <Compile Include="Interop\GlobalShim\format.cs" />
+    <Compile Include="Interop\Provided\CachedEntityObject.cs" />
+    <Compile Include="Interop\viz\ChartSeries.cs" />
+    <Compile Include="Interop\viz\dxChartAnnotationConfig.cs" />
+    <Compile Include="Interop\viz\dxChartArgumentAxis.cs" />
+    <Compile Include="Interop\viz\dxChartArgumentAxisConstantLines.cs" />
+    <Compile Include="Interop\viz\dxChartArgumentAxisConstantLinesLabel.cs" />
+    <Compile Include="Interop\viz\dxChartArgumentAxisConstantLineStyle.cs" />
+    <Compile Include="Interop\viz\dxChartArgumentAxisConstantLineStyleLabel.cs" />
+    <Compile Include="Interop\viz\dxChartArgumentAxisLabel.cs" />
+    <Compile Include="Interop\viz\dxChartArgumentAxisStrips.cs" />
+    <Compile Include="Interop\viz\dxChartArgumentAxisStripsLabel.cs" />
+    <Compile Include="Interop\viz\dxChartArgumentAxisTitle.cs" />
+    <Compile Include="Interop\viz\dxChartCommonAnnotationConfig.cs" />
+    <Compile Include="Interop\viz\dxChartCommonAxisSettings.cs" />
+    <Compile Include="Interop\viz\dxChartCommonAxisSettingsConstantLineStyle.cs" />
+    <Compile Include="Interop\viz\dxChartCommonAxisSettingsConstantLineStyleLabel.cs" />
+    <Compile Include="Interop\viz\dxChartCommonAxisSettingsLabel.cs" />
+    <Compile Include="Interop\viz\dxChartCommonAxisSettingsStripStyle.cs" />
+    <Compile Include="Interop\viz\dxChartCommonAxisSettingsStripStyleLabel.cs" />
+    <Compile Include="Interop\viz\dxChartCommonAxisSettingsTitle.cs" />
+    <Compile Include="Interop\viz\dxChartCommonPaneSettings.cs" />
+    <Compile Include="Interop\viz\dxChartCommonSeriesSettings.cs" />
+    <Compile Include="Interop\viz\dxChartLegend.cs" />
+    <Compile Include="Interop\viz\dxChartOptions.cs" />
+    <Compile Include="Interop\viz\dxChartPanes.cs" />
+    <Compile Include="Interop\viz\dxChartTooltip.cs" />
+    <Compile Include="Interop\viz\dxChartValueAxis.cs" />
+    <Compile Include="Interop\viz\dxChartValueAxisConstantLines.cs" />
+    <Compile Include="Interop\viz\dxChartValueAxisConstantLinesLabel.cs" />
+    <Compile Include="Interop\viz\dxChartValueAxisConstantLineStyle.cs" />
+    <Compile Include="Interop\viz\dxChartValueAxisConstantLineStyleLabel.cs" />
+    <Compile Include="Interop\viz\dxChartValueAxisLabel.cs" />
+    <Compile Include="Interop\viz\dxChartValueAxisStrips.cs" />
+    <Compile Include="Interop\viz\dxChartValueAxisStripsLabel.cs" />
+    <Compile Include="Interop\viz\dxChartValueAxisTitle.cs" />
+    <Compile Include="Interop\viz\dxFunnelLegend.cs" />
+    <Compile Include="Interop\viz\dxFunnelOptions.cs" />
+    <Compile Include="Interop\viz\dxFunnelTooltip.cs" />
+    <Compile Include="Interop\viz\dxPieChartAdaptiveLayout.cs" />
+    <Compile Include="Interop\viz\dxPieChartLegend.cs" />
+    <Compile Include="Interop\viz\dxPieChartOptions.cs" />
+    <Compile Include="Interop\viz\dxPolarChartAdaptiveLayout.cs" />
+    <Compile Include="Interop\viz\dxPolarChartAnnotationConfig.cs" />
+    <Compile Include="Interop\viz\dxPolarChartArgumentAxis.cs" />
+    <Compile Include="Interop\viz\dxPolarChartArgumentAxisConstantLines.cs" />
+    <Compile Include="Interop\viz\dxPolarChartArgumentAxisConstantLinesLabel.cs" />
+    <Compile Include="Interop\viz\dxPolarChartArgumentAxisLabel.cs" />
+    <Compile Include="Interop\viz\dxPolarChartArgumentAxisMinorTick.cs" />
+    <Compile Include="Interop\viz\dxPolarChartArgumentAxisStrips.cs" />
+    <Compile Include="Interop\viz\dxPolarChartArgumentAxisStripsLabel.cs" />
+    <Compile Include="Interop\viz\dxPolarChartArgumentAxisTick.cs" />
+    <Compile Include="Interop\viz\dxPolarChartCommonAnnotationConfig.cs" />
+    <Compile Include="Interop\viz\dxPolarChartCommonAxisSettings.cs" />
+    <Compile Include="Interop\viz\dxPolarChartCommonAxisSettingsConstantLineStyle.cs" />
+    <Compile Include="Interop\viz\dxPolarChartCommonAxisSettingsConstantLineStyleLabel.cs" />
+    <Compile Include="Interop\viz\dxPolarChartCommonAxisSettingsLabel.cs" />
+    <Compile Include="Interop\viz\dxPolarChartCommonAxisSettingsMinorTick.cs" />
+    <Compile Include="Interop\viz\dxPolarChartCommonAxisSettingsStripStyle.cs" />
+    <Compile Include="Interop\viz\dxPolarChartCommonAxisSettingsStripStyleLabel.cs" />
+    <Compile Include="Interop\viz\dxPolarChartCommonAxisSettingsTick.cs" />
+    <Compile Include="Interop\viz\dxPolarChartCommonSeriesSettings.cs" />
+    <Compile Include="Interop\viz\dxPolarChartLegend.cs" />
+    <Compile Include="Interop\viz\dxPolarChartOptions.cs" />
+    <Compile Include="Interop\viz\dxPolarChartTooltip.cs" />
+    <Compile Include="Interop\viz\dxPolarChartValueAxis.cs" />
+    <Compile Include="Interop\viz\dxPolarChartValueAxisConstantLines.cs" />
+    <Compile Include="Interop\viz\dxPolarChartValueAxisConstantLinesLabel.cs" />
+    <Compile Include="Interop\viz\dxPolarChartValueAxisLabel.cs" />
+    <Compile Include="Interop\viz\dxPolarChartValueAxisStrips.cs" />
+    <Compile Include="Interop\viz\dxPolarChartValueAxisStripsLabel.cs" />
+    <Compile Include="Interop\viz\dxPolarChartValueAxisTick.cs" />
+    <Compile Include="Interop\viz\Font.cs" />
+    <Compile Include="Interop\viz\PieChartSeries.cs" />
+    <Compile Include="Interop\viz\PolarChartSeries.cs" />
+    <Compile Include="Interop\viz\ScaleBreak.cs" />
     <Compile Include="Pages\Error.cshtml.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Startup.cs" />
