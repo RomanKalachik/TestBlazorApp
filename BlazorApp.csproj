@@ -38,6 +38,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ScriptModules Remove="Scripts\funnel.js" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Include="Data\WeatherForecast.cs" />
     <Compile Include="Data\WeatherForecastService.cs" />
     <Compile Include="Interop\GlobalShim\Date.cs" />
