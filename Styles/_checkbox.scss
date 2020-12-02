@@ -1,0 +1,53 @@
+.dx-blazor-checkbox {
+    & .custom-control {
+        z-index: auto;
+    }
+
+    & .custom-control.custom-checkbox {
+        padding-left: 0;
+
+        & .custom-control-label {
+            &:before {
+                position: relative;
+                left: 0;
+            }
+
+            &:after {
+                left: 0;
+            }
+        }
+    }
+
+    & .dx-blazor-checkbox-label-left {
+        padding-right: .25rem;
+    }
+
+    & .dx-blazor-checkbox-label-right {
+        padding-left: .25rem;
+    }
+
+    &.dx-blazor-checkbox-align-left {
+        display: block;
+        text-align: left;
+    }
+
+    &.dx-blazor-checkbox-align-right {
+        display: block;
+        text-align: right;
+    }
+
+    &.dx-blazor-checkbox-align-center {
+        display: block;
+        text-align: center;
+    }
+
+    &.dx-blazor-checkbox-space-between {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &.dx-blazor-checkbox-space-around {
+        display: flex;
+        justify-content: space-around;
+    }
+}

@@ -1,0 +1,9 @@
+<Project Xmlns="">
+  <PropertyGroup>
+    <NoWarn>$(NoWarn);0618</NoWarn>
+    <DxVersionShort>20.2</DxVersionShort>
+    <DxAssemblyTitle>DevExpress.Blazor.v20.2</DxAssemblyTitle>
+    <DxPackageVersionPostfix></DxPackageVersionPostfix>
+    <DxAssemblyRevision>.0</DxAssemblyRevision>
+  </PropertyGroup>
+</Project>

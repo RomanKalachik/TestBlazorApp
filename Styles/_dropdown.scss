@@ -1,0 +1,281 @@
+$padding: .5rem !default;
+
+.dxbs-textbox .dxbs-feedback [data-error-image],
+.dxbs-textbox .dxbs-feedback .dxbs-clear-btn,
+.dxbs-memo .dxbs-feedback [data-error-image],
+.dxbs-memo .dxbs-feedback .dxbs-clear-btn,
+.dxbs-button-edit .dxbs-feedback .dxbs-clear-btn,
+.dxbs-button-edit .dxbs-feedback [data-error-image],
+.dxbs-dropdown-edit .dxbs-feedback .dxbs-clear-btn,
+.dxbs-dropdown-edit .dxbs-feedback [data-error-image],
+.dxbs-spin-edit .dxbs-feedback .dxbs-clear-btn,
+.dxbs-spin-edit .dxbs-feedback [data-error-image],
+.dxbs-uc .input-group .dxbs-feedback .dxbs-clear-btn {
+    padding-left: 0;
+    display: inline-block;
+    height: 100%;
+}
+
+
+.dxbs-button-edit .dxbs-feedback .dxbs-clear-btn,
+.dxbs-button-edit .dxbs-feedback [data-error-image],
+.dxbs-dropdown-edit .dxbs-feedback .dxbs-clear-btn,
+.dxbs-dropdown-edit .dxbs-feedback [data-error-image],
+.dxbs-spin-edit .dxbs-feedback .dxbs-clear-btn,
+.dxbs-spin-edit .dxbs-feedback [data-error-image],
+.dxbs-uc .input-group .dxbs-feedback .dxbs-clear-btn {
+    padding-right: 0.6em;
+}
+
+div.dxbs-spin-edit > div > div > span.dxbs-feedback,
+div.dxbs-date-edit > div > div > span.dxbs-feedback,
+div.dxbs-combobox > div > div > span.dxbs-feedback {
+    position: static;
+}
+
+
+.dxbs-dropdown-modal:before {
+    content: " ";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    opacity: .3;
+    z-index: -1;
+}
+
+
+
+/* Blazor - filtering editors clear button */
+div.dxbs-date-edit > .dxbs-edit-clbv > div > input.form-control,
+div.dxbs-spin-edit > .dxbs-edit-clbv > div > input.form-control,
+div.dxbs-combobox > .dxbs-edit-clbv > div > input.form-control {
+    padding-right: 5em;
+}
+.dx-page-size-selector > .dxbs-combobox > .input-group > div > span.form-control,
+div.dxbs-date-edit > div:not(.dxbs-edit-clbv) > div > input.form-control,
+div.dxbs-spin-edit > div:not(.dxbs-edit-clbv) > div > input.form-control,
+div.dxbs-combobox > div:not(.dxbs-edit-clbv) > div > input.form-control {
+    padding-right: 3.4em;
+}
+
+.dxbs-clear-btn {
+    display: none !important;
+}
+
+.dxbs-edit-clbv .dxbs-clear-btn {
+    display: flex !important;
+}
+
+.btn.dxbs-edit-btn.dxbs-clear-btn {
+    box-shadow: rgba(0, 0, 0, 0) 0px 1px 4px;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin: 0;
+    width: calc(0.6em + 14px);
+    overflow: visible;
+}
+.btn-lg.dxbs-edit-btn.dxbs-clear-btn {
+    width: calc(0.6em + 28px);
+}
+/****/
+.dxbs-dropdown-modal.show {
+    display: block;
+}
+
+.input-group-append.form-control > button.dxbs-dropdown-toggle {
+    flex-grow: 1;
+    border-bottom-right-radius: inherit;
+    border-top-right-radius: inherit;
+}
+
+.input-group > .input-group-append.dxbs-spin-btn-group > .dropdown-toggle::after,
+.input-group > .input-group-append.dxbs-spin-btn-group > .dropdown-toggle::before {
+    content: none;
+}
+
+.invalid .input-group .dxbs-form-control,
+.valid .input-group .dxbs-form-control {
+    z-index: 3;
+}
+
+.dx-dropdown-list-container > div.dropdown-menu {
+    max-height: 200px;
+}
+
+
+.dxbs-dropdown-toggle.dropdown-toggle::after {
+    display: flex;
+    border-top: .36em solid;
+    border-right: .36em solid transparent;
+    border-left: .36em solid transparent;
+    margin-left: 0px;
+}
+.btn-sm > .dxbs-dropdown-toggle.dropdown-toggle::after,
+.btn-sm.dxbs-dropdown-toggle.dropdown-toggle::after {
+    border-top: 4px solid;
+    border-right: 4px solid transparent;
+    border-left: 4px solid transparent;
+}
+.btn-lg > .dxbs-dropdown-toggle.dropdown-toggle::after,
+.btn-lg.dxbs-dropdown-toggle.dropdown-toggle::after {
+    border-top: 6px solid;
+    border-right: 6px solid transparent;
+    border-left: 6px solid transparent;
+}
+
+.dxbs-dropdown-modal.modal .modal-dialog {
+    display: inline-block;
+    margin: 0;
+    top: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+}
+
+.dxbs-dropdown-modal.modal.fade .modal-dialog {
+    transform: translate(-50%, 0);
+}
+
+.dxbs-dropdown-modal.modal .modal-header,
+.dxbs-dropdown-area.dropdown-menu .modal-header {
+    align-items: center;
+}
+
+.dxbs-dropdown-modal.modal .modal-header,
+.dxbs-dropdown-area.dropdown-menu .modal-header,
+.dxbs-dropdown-modal.modal .modal-body,
+.dxbs-dropdown-area.dropdown-menu .modal-body {
+    padding: $padding;
+}
+
+.dxbs-dropdown-area .dxbs-calendar.card {
+    border-style: none;
+}
+
+.dxbs-dropdown-area .modal-header .modal-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    align-self: baseline;
+}
+
+.dxbs-dropdown-area .modal-header.card-header {
+    padding: .3rem;
+}
+
+.dxbs-dropdown-edit .dropdown-menu {
+    margin: 0.125rem 0;
+    box-shadow: 0 .25rem .5rem rgba(0,0,0,.15);
+    -webkit-box-shadow: 0 .25rem .5rem rgba(0,0,0,.15);
+}
+
+.dxbs-dropdown-area .modal-header.card-header .dxbs-cmd-btn.roller-cancel-btn {
+    margin-right: .5rem;
+}
+
+.dxbs-dropdown-area .modal-header.card-header .dxbs-cmd-btn.roller-apply-btn {
+    margin-left: .5rem;
+}
+
+.dxbs-dropdown-toggle.dropdown-toggle.dxbs-icon-btn::after {
+    border-color: transparent;
+}
+.dxbs-dropdown-toggle.dropdown-toggle.dxbs-icon-btn::before {
+    border-color: transparent;
+}
+
+.dxbs-button-icon {
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    top: calc(50% - 8px);
+    left: calc(50% - 8px);
+}
+
+.btn.btn-lg .dxbs-button-icon {
+    width: 36px;
+    height: 36px;
+    top: calc(50% - 16px);
+    left: calc(50% - 16px);
+}
+
+.dxbs-button-icon > use {
+    fill: currentColor;
+    opacity: 0.85;
+}
+
+div.input-group-append.dxbs-input-group-append > .btn {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+div.input-group-append.dxbs-input-group-append > .btn.dxbs-dropdown-toggle {
+    border-bottom: 0;
+    border-top: 0;
+    border-right: 0;
+    height: 100%;
+}
+
+div.input-group-append.dxbs-input-group-append > button.btn.btn-secondary.dxbs-edit-btn {
+    border-radius: 0;
+}
+
+div.input-group-append.dxbs-input-group-append {
+    position: absolute;
+    right: 0;
+    padding: 0;
+    display: flex;
+    z-index: 4;
+    height: 100%;
+    width: auto;
+    border-left: none;
+    border-color: transparent;
+    background: none;
+    box-shadow: none;
+    overflow: hidden;
+}
+
+div.input-group-append.dxbs-input-group-append > .btn {
+    margin: 0;
+}
+
+.dropdown-menu .btn {
+    position: relative;
+}
+
+div.dxbs-dropdown-edit {
+    align-self: flex-start;
+}
+
+div.dxbs-dm.dropdown-menu {
+    top: unset;
+    bottom: unset;
+    left: unset;
+    right: unset;
+}
+
+/* Blazor - dropdown width */
+.dx-dropdown-list-container.dxbs-dropdown-editor-width .dropdown-menu .dxbs-listbox a {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.dx-dropdown-list-container.dxbs-dropdown-editor-width .dropdown-menu,
+.dx-dropdown-list-container.dxbs-dropdown-content-width .dropdown-menu {
+    min-width: 0;
+}
+
+@-moz-document url-prefix() {
+    .dx-dropdown-list-container.dxbs-dropdown-content-width .dropdown-menu .dxbs-listbox a,
+    .dx-dropdown-list-container.dxbs-dropdown-content-or-editor-width .dropdown-menu .dxbs-listbox a {
+        padding-right: 2em;
+    }
+}
+
+.dxbs-dropdown-edit.dx-blazor-multicolumn-editor div.dxbs-dm.dropdown-menu {
+    overflow-y: visible;
+}
+
+body:not(.modal-open) .dxbs-dropdown-modal .modal-dialog {
+    opacity: 0
+}

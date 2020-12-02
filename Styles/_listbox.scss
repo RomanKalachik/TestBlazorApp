@@ -1,0 +1,101 @@
+@import 'state-decorations';
+
+.dxbs-listbox .list-group-item-action:not(.disabled):not(.dxbs-listbox-active):not(.active),
+.dxbs-listbox-active,
+.dxbs-listbox-active.active,
+.dxbs-listbox-active.list-group-item-action.active,
+.dxbs-listbox-active.list-group-item-action.active:hover {
+    position: relative;
+    transform: scale(1);
+    background: transparent;
+    color: inherit;
+}
+
+@include state_backdrop(".dxbs-listbox .list-group-item-action:not(.disabled):not(.dxbs-listbox-active):not(.active)", (), "", false);
+
+.dxbs-listbox-active:not(tr):before
+{
+    content: "";
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    background-color: currentColor;
+    left: 0;
+    top: 0;
+    opacity: 0.1;
+}
+
+tr.dx-blazor-listbox-column:not(.dropdown-item):hover {
+    transform: scale(1);
+}
+
+tr.dxbs-listbox-active td:before,
+tr.dx-blazor-listbox-column:not(.dropdown-item):not(.dx-blazor-disabled-editor):not(.dx-blazor-readonly-row):hover td:before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    background-color: currentColor;
+    left: 0;
+    top: 0;
+    opacity: 0.025;
+}
+
+.dxbs-combobox-hint-text {
+    position: absolute;
+    opacity: .3;
+    pointer-events: none;
+    z-index: 4;
+}
+
+
+.dxbs-listbox .empty-item .list-group-item-action:before,
+.dxbs-listbox .empty-item .custom-control-label:before,
+.dxbs-listbox .empty-item.dropdown-item:before {
+    content: ".";
+    visibility: hidden;
+}
+
+.dxbs-listbox li > .list-group-item > .dx-blazor-checkbox {
+    display: inline-block;
+    cursor: default;
+
+    &+span {
+        display: inline-block;
+        margin-left: .25rem;
+    }
+}
+
+.dx-dropdown-list-container .dxgvHSDC.card {
+    border-bottom-left-radius: 0;
+}
+
+.dx-dropdown-list-container .dxbs-gridview > div > .dxbs-grid-vsd {
+    height: auto;
+    max-height: 200px;
+}
+
+tr.dx-blazor-listbox-column.dropdown-item {
+    display: table-row;
+    padding: inherit;
+}
+
+.dx-listbox-scrollable .dxbs-gridview > div > .dxbs-grid-vsd {
+    height: inherit;
+}
+
+.dxbs-listbox > .dxbs-gridview .dxgvHSDC {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    th {
+        cursor: default !important;
+    }
+
+}
+
+.dxbs-listbox > .dxbs-gridview .dxgvCSD {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}

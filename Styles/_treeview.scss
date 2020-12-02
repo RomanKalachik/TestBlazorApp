@@ -1,0 +1,50 @@
+@import 'state-decorations';
+.dxbs-tree > ul.nav ul.nav {
+    margin: 0.2em 0 0.2em 2em;
+}
+
+.dxbs-tree ul.nav > li > a {
+    display: flex;
+    align-items: center;
+    padding: .125rem .625rem .125rem .125rem;
+}
+
+.dxbs-tree ul.nav > li > a > span:not(.image):not(.badge):not(.expand-btn) {
+    flex: 1 1 auto;
+}
+
+.dxbs-tree ul.nav > li > a:not(.disabled):not(.active) {
+    cursor: pointer;
+    color: inherit;
+}
+
+.dxbs-tree ul.nav > li > a:not(.disabled):not(.active) {
+    position: relative;
+    transform: scale(1);
+}
+
+@include state_backdrop(".dxbs-tree ul.nav > li > a:not(.disabled):not(.active)", (border-radius: inherit), "", false);
+
+.dxbs-tree ul.nav > li > a > span.expand-btn:not(:last-child) {
+    margin-right: .25rem;
+}
+
+.dxbs-tree .expand-btn.btn {
+    display: inline-flex;
+    box-sizing: content-box;
+    padding: .5rem;
+    font-size: inherit;
+    &,
+    & > span {
+        min-height: .7em;
+        min-width: .7em;
+    }
+    &,
+    &:hover,
+    &:focus,
+    &:active {
+        box-shadow: none!important;
+        font-weight: inherit;
+        color: inherit;
+    }
+}

@@ -1,0 +1,18 @@
+<Project>
+  <PropertyGroup>
+    <VsNodeJsPath>$(MSBuildToolsPath)\..\..\Microsoft\VisualStudio\NodeJs\node.exe</VsNodeJsPath>
+    <VsNpmPath>$(MSBuildToolsPath)\..\..\Microsoft\VisualStudio\NodeJs\npm.cmd</VsNpmPath>
+  </PropertyGroup>
+  
+  <PropertyGroup Condition="Exists('$(VsNodeJsPath)')">
+    <NodeJsPath>$(VsNodeJsPath)</NodeJsPath>
+    <NpmPath>$(VsNpmPath)</NpmPath>
+    <VsNode>True</VsNode>
+  </PropertyGroup>
+  
+  <PropertyGroup Condition="!Exists('$(VsNodeJsPath)')">
+    <NodeJsPath>node</NodeJsPath>
+    <NpmPath>npm</NpmPath>
+    <VsNode>False</VsNode>
+  </PropertyGroup>
+</Project>

@@ -1,0 +1,59 @@
+.dxbs-textbox .dxbs-feedback [data-error-image],
+.dxbs-textbox .dxbs-feedback .dxbs-clear-btn,
+.dxbs-memo .dxbs-feedback [data-error-image],
+.dxbs-memo .dxbs-feedback .dxbs-clear-btn
+{
+    padding-right: 0.6em;
+}
+
+.dxbs-memo .form-control.dxbs-vertical-resize
+{
+    resize: vertical;
+}
+
+.dxbs-memo .form-control.dxbs-horizontal-resize
+{
+    resize: horizontal;
+}
+
+.dxbs-memo .form-control.dxbs-disable-resize
+{
+    resize: none;
+}
+
+.dxbs-memo .form-control.dxbs-enable-resize
+{
+    resize: both;
+}
+
+.dxbs-memo .form-control:not(.dxbs-disable-mh) {
+    min-height: 4em;
+}
+.dxbs-memo .form-control {
+    max-width: 100%;
+}
+
+.dxbs-memo .dxbs-feedback {
+    right: 15px;
+    pointer-events: none;
+    z-index: 3;
+    width: auto;
+}
+.dxbs-edit-clbv > div > input.form-control
+{
+    padding-right: 2.571em;
+}
+
+.dxbs-edit-clbv > div > textarea.form-control
+{
+    padding-right: calc(15px + 2.2em);
+}
+
+.dxbs-memo .dxbs-feedback .dxbs-clear-btn {
+    pointer-events: all;
+}
+
+.dxbs-memo .dxbs-reset-width
+{
+    width: min-content;
+}

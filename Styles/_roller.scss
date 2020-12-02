@@ -1,0 +1,129 @@
+@import 'state-decorations';
+
+.roller-container {
+    display: inline-flex;
+    flex-flow: column nowrap;
+    flex: 1 1;
+    position: relative;
+}
+
+.roller:hover,
+.roller:focus {
+    color: inherit;
+}
+.roller-container > span:first-child {
+    text-align: center;
+    padding: 1rem 0;
+    padding-bottom: .25rem;
+    opacity: .5;
+}
+
+.roller {
+    outline: 0;
+    text-decoration: none !important;
+    overflow: hidden;
+    position: relative;
+
+    &-cancel-btn.btn.dxbs-cmd-btn,
+    &-apply-btn.btn.dxbs-cmd-btn {
+        padding: .3rem;
+        color: inherit;
+    }
+
+    &:not(:focus):not(:hover) {
+        color: inherit;
+    }
+}
+
+.roller-title {
+    font-family: monospace, monospace;
+    font-size: .8125rem;
+    font-weight: 600;
+}
+
+.roller-item,
+.roller-after {
+    text-align: center;
+    padding: .4rem .75rem;
+    line-height: 1.5rem;
+    will-change: transform, opacity;
+    white-space: nowrap;
+}
+.roller-item,
+.roller-item.expander {
+    cursor: pointer;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+}
+.roller-item.expander {
+    height: 0;
+    overflow: hidden;
+    visibility: hidden;
+    padding: 0 1rem;
+}
+
+.roller-after {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    box-sizing: border-box;
+    transform: translateY(-50%);
+    border-color: currentColor;
+    cursor: default;
+
+    & .roller-item,
+    &:after {
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 100%;
+        z-index: 1;
+        font-weight: 600;
+    }
+
+    &:after {
+        content: " ";
+        border-top: 1px solid currentColor;
+        border-bottom: 1px solid currentColor;
+        opacity: .15;
+        z-index: 2;
+    }
+
+    .roller-invalid-date & .roller-item {
+        opacity: .35;
+    }
+}
+.roller:focus .roller-after::after {
+    opacity: .3;
+}
+
+.rollers-container {
+    display: flex;
+    flex-flow: row nowrap;
+    padding: .5rem .5rem 2rem;
+    min-width: 310px;
+
+    .dxbs-date-edit &.dxbs-time-roller {
+        min-width: unset;
+        width: 100%;
+    }
+
+    &:empty {
+        height: calc(3.75rem + 1.5em + 180px);      //stub until roller gets better render mechanism: 
+    }                                               //180px (roller-items) + 1.5em (roller-title line height) + 1.25rem (roller-title paddings) + 2.5rem (rollers-container paddings)
+}
+
+.roller-footer.btn-toolbar.card-footer {
+    padding: 0 .5rem;
+
+    align-items: center;
+    justify-content: center;
+
+    .dx-btn {
+        margin: .5em 0;
+    }
+}

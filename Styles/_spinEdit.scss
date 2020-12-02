@@ -1,0 +1,75 @@
+
+
+.dxbs-dropdown-toggle.dropdown-toggle.dxbs-spin-edit-toggle::after {
+    margin-bottom: 0.2em;
+}
+
+.inc.btn.dxbs-edit-btn:not(.dxbs-mobile-btn) {
+    border-bottom: 0px;
+    border-bottom-right-radius: 0px;
+}
+.dec.btn.dxbs-edit-btn:not(.dxbs-mobile-btn) {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: auto;
+    border-bottom: none;
+}
+
+.inc.btn.dxbs-edit-btn + .dec.btn.dxbs-edit-btn {
+    margin-left: 0;
+    border-top: 0px;
+    border-top-right-radius: 0;
+}
+
+.input-group .dxbs-edit-btn.inc.btn-secondary:not(.dxbs-mobile-btn) {
+    border-bottom: 0;
+
+}
+
+.input-group .dxbs-edit-btn.dec.btn-secondary.dxbs-mobile-btn {
+    border-bottom: none;
+    border-top: none;
+    border-right: none;
+}
+.input-group .dxbs-edit-btn.inc.btn-secondary.dxbs-mobile-btn {
+    border-top: none;
+    border-bottom: none;
+    border-right: none;
+}
+.input-group .dxbs-edit-btn.inc.btn-secondary.dxbs-mobile-btn {
+    height: 100%;
+}
+
+.dxbs-clickable.dxbs-edit-btn.btn-secondary {
+    width: 100%;
+}
+
+.dxbs-spin-btn-group .dxbs-edit-btn.btn-secondary {
+    display: flex;
+    flex: 1 1 auto;
+    padding-top: 0;
+    padding-bottom: 0;
+    height: 50%;
+    border-top: 0;
+    border-bottom: 0;
+    border-right: 0;
+    margin-top: 0;
+}
+
+.dxbs-spin-btn-group > .dxbs-edit-btn.btn-secondary.dec > dropdown-toggle::after {
+    vertical-align: .355em;
+}
+
+.dxbs-edit-btn.inc .dropdown-toggle::after {
+    transform: rotate(180deg);
+    margin-bottom: 0;
+}
+
+.dxbs-edit-btn.inc:not(.dxbs-mobile-btn) .dropdown-toggle::after {
+    margin-top: 0.2em;
+}
+
+.dxbs-edit-clbv.dxbs-mobile-spin input.form-control {
+    padding-right: 8em;
+}

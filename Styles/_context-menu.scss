@@ -1,0 +1,61 @@
+.dx-blazor-context-menu.dropdown-menu, .dx-blazor-context-menu-submenu.dropdown-menu {
+    overflow: visible;
+    padding: 0;
+    display: block;
+    margin: 0;
+    border: 1px solid rgb(214, 213, 213);
+
+    -moz-box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.10), 0 2px 6px 0 rgba(0, 0, 0, 0.1);
+    -webkit-box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.10), 0 2px 6px 0 rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.10), 0 2px 6px 0 rgba(0, 0, 0, 0.1);
+
+    .dropdown-divider {
+        margin: 0;
+
+        &:first-child {
+            display: none;
+        }
+    }
+}
+
+.dx-blazor-context-menu-submenu.dropdown-menu {
+    margin-top: -1px;
+}
+
+.dx-blazor-context-menu-item.dropdown-item {
+    display: flex;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+
+    padding-left: 8px;
+
+    .has-icons > li > & {
+        .dx-blazor-context-menu-item-text {
+            display: inline-block;
+            padding-left: 24px;
+        }
+
+        &.has-icon .dx-blazor-context-menu-item-text {
+            padding-left: 8px;
+        }
+    }
+
+    .dxbs-icon-collapsed {
+        position: absolute;
+        height: 1.5rem;
+        width: 1.5rem;
+        top: calc(50% - 0.75rem);
+        right: 0;
+    }
+
+    .dx-blazor-context-menu-item-icon {
+        padding: 0;
+        display: inline-flex;
+
+        img {
+            height: 16px;
+            width: 16px;
+        }
+    }
+}

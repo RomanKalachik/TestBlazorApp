@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Project xmlns="">
+    <Import Project="Development.Build.props" />
+    <Import Project="Development.Npm.Build.props" />
+    <PropertyGroup>
+        <DxReleaseBuild Condition="'$(Configuration)' == 'release' or '$(Configuration)' == 'Release'">True</DxReleaseBuild>
+        <DxWasmBlazorFramework>netstandard2.1</DxWasmBlazorFramework>
+        <SkipStaticContentRestore>false</SkipStaticContentRestore>
+    </PropertyGroup>
+    <ItemGroup>
+        <ScriptModules Include="Scripts\*.js" />
+        <ScriptModules Include="resources.build.js" />
+        <ScssFiles Include="Styles\*.scss" />
+    </ItemGroup>
+    <Target Name="RestoreNpm" Condition="!Exists('node_modules/')">
+        <Message Text="Restore npm resources" />
+        <Exec Command="&quot;$(NpmPath)&quot; ci" ContinueOnError="True" />
+        <CallTarget Targets="NodeSassInstall" Condition="'$(VsNode)' == 'True'" />
+    </Target>
+    <Target Name="NodeSassInstall">
+        <Exec Command="&quot;$(NodeJsPath)&quot; node_modules/node-sass/scripts/install.js" ContinueOnError="True" />
+    </Target>
+    <Target Name="BuildStaticResources" BeforeTargets="PreBuildEvent"
+            DependsOnTargets="RestoreNpm"
+            Condition="$(SkipStaticContentRestore.Equals(false))">
+        <PropertyGroup>
+           <DxCreateStaticHash Condition="!Exists('$(ProjectDir)Bases\ResourceLoader.Generated.cs')">True</DxCreateStaticHash>
+        </PropertyGroup>
+        <Exec Command="&quot;$(NodeJsPath)&quot; resources.build.js configName=$(Configuration)"/>
+        <ItemGroup Condition="'$(DxCreateStaticHash)' == 'True'">
+            <Compile Include="$(ProjectDir)Bases\ResourceLoader.Generated.cs" AutoGen="true" />
+        </ItemGroup>
+    </Target>
+    <Target Name="DxPreBuildEvent" BeforeTargets="PreBuildEvent"
+            Condition="Exists('resources.build.js')">
+        <Message Text="DxPreBuild $(TargetFrameworks) $(Configuration)" Importance="High" />
+        <CallTarget Targets="RestoreNpm; BuildStaticResources;"  Condition="'$(SkipStaticContentRestore)' == 'False'" />
+    </Target>
+</Project>

@@ -1,0 +1,55 @@
+/* icons */
+.dx-back,
+.dx-more,
+.dxsc-time-icon,
+.dxsc-save-icon,
+.dxsc-edit-icon,
+.dxsc-delete-icon,
+.dxsc-close-icon,
+.dxsc-description-icon,
+.dxsc-recurrence-icon,
+.dxsc-exception-icon,
+.dxsc-location-icon,
+.dxsc-resource-icon,
+.dxsc-status-icon,
+.dxsc-label-icon {
+    width: 18px;
+    height: 18px;
+}
+
+.dx-expand {
+    width: 22px;
+    height: 22px;
+}
+
+.dx-apt-recurrence,
+.dx-apt-exception {
+    width: 14px;
+    height: 14px;
+}
+
+.dx-settings {
+    width: 16px;
+    height: 16px;
+}
+
+.dx-search {
+    width: 24px;
+    height: 24px;
+}
+
+.btn .dx-blazor-clear-button-icon {
+    width: 14px;
+    height: 14px;
+    opacity: 0.35;
+    overflow: visible;
+}
+
+.btn-lg .dx-blazor-clear-button-icon {
+    width: 28px;
+    height: 28px;
+}
+
+input.dx-blazor-hide-ms-button::-ms-reveal {
+    display: none;
+}

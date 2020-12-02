@@ -1,0 +1,8 @@
+node_modules/*
+Scripts/external/*
+wwwroot/*
+**/*.spec.js
+
+resources.build.js
+resources.build.karma_ci.js
+resources.build.rollup_plugins.js

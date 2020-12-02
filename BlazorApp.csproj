@@ -1,0 +1,61 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+  <Import Project="DevExpress.Blazor.Core.targets" />
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <PreserveCompilationContext>false</PreserveCompilationContext>
+    <AppendTargetFrameworkToOutputPath>False</AppendTargetFrameworkToOutputPath>
+    <EnableDefaultItems>False</EnableDefaultItems>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="**\*.razor" Exclude="obj\**\*.razor" />
+    <EmbeddedResource Include="Resources\LocalizationRes.resx" />
+
+    <Content Include="*.props" />
+    <Content Include="*.targets" />
+    <Content Include="*.js" />
+
+    <None Include=".eslintignore" />
+    <None Include=".eslintrc" />
+    <None Include=".lintstagedrc" />
+    <None Include="Interop\DevExpress.Blazor.Interop.WASM\DevExpress.Blazor.Interop.WASM.csproj" />
+
+    <Content Include="Images\Svg\**\*.svg" />
+    <Content Include="Localization\*.tt" />
+    <Content Include="Scripts\**\*.js" />
+    <Content Include="Styles\**\*.scss" />
+    <Content Include="wwwroot\**\*.css" CopyToOutputDirectory="PreserveNewest" Link="staticwebassets\DevExpress.Blazor\wwwroot\%(RecursiveDir)%(Filename)%(Extension)" />
+    <Content Include="wwwroot\**\*.js" CopyToOutputDirectory="PreserveNewest" Link="staticwebassets\DevExpress.Blazor\wwwroot\%(RecursiveDir)%(Filename)%(Extension)" />
+
+    <Content Include="*.xml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="Data\WeatherForecast.cs" />
+    <Compile Include="Data\WeatherForecastService.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Startup.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.JSInterop.WebAssembly" Version="3.2.1" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="Localization\DxBlazorLocalizerGenerator.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>DxBlazorLocalizerGenerator.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Localization\DxBlazorLocalizerGenerator.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>DxBlazorLocalizerGenerator.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+</Project>

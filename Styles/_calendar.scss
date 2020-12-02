@@ -1,0 +1,151 @@
+@import 'state-decorations';
+@include state_backdrop(".dxbs-calendar.card .btn.dx-calendar-header-btn", ( border-radius: 0 ));
+$padding: .5rem !default;
+
+.dxbs-calendar.card {
+    &,
+    & .calendar-view.card {
+        overflow: hidden;
+    }
+
+    & .card-header.btn-group {
+        padding: 0;
+        /*height: 100%;*/
+        align-items: stretch;
+        -ms-flex-item-align: stretch;
+        box-shadow: none;
+        overflow: hidden;
+
+        .calendar-hidden-button {
+            opacity: 0;
+            pointer-events: none;
+            visibility: hidden;
+        }
+
+        & > .btn.btn-secondary:not(:first-child),
+        & > .btn.btn-secondary:not(:last-child) {
+            &:before,
+            &:after {
+                content: none;
+            }
+        }
+    }
+
+    & .card-body {
+        min-height: unset;
+    }
+
+    & .card-footer.btn-toolbar {
+        padding: 0 $padding;
+
+        & .btn {
+            margin-top: 0.5em;
+            margin-bottom: 0.5em;
+        }
+    }
+
+    & .dxbs-today {
+        border: 2px solid currentColor;
+    }
+
+    & .dxbs-month-title {
+        font-weight: 600;
+        /*height: 100%;*/
+        margin: 0;
+    }
+
+    & .dxbs-month-title.btn-sm {
+        font-size: 0.85em;
+        padding-top: .445em;
+        padding-bottom: .445em;
+    }
+
+    & .dxbs-month-title.btn-lg {
+        font-size: 1.125rem;
+    }
+
+    & .dxbs-month-title:not(.btn-sm):not(.btn-lg) {
+        font-size: 1.1rem;
+    }
+
+    .dx-calendar-header-btn {
+        /*height: 100%;*/
+        margin: 0;
+        padding: 0.5em 0.8em;
+        display: block;
+        /*box-sizing: content-box;*/
+        color: inherit !important;
+    }
+
+    & table td {
+        font-weight: normal;
+        vertical-align: middle;
+
+        &.calendar-clickable-cell {
+            cursor: pointer;
+        }
+    }
+}
+.dxbs-calendar-dow {
+    font-weight: 600;
+    opacity: .5;
+}
+.dxbs-calendar > .calendar-row {
+    border-top-right-radius: inherit;
+    border-top-left-radius: inherit;
+}
+
+.dxbs-calendar > .calendar-row > .calendar-view {
+    /*border-top-right-radius: inherit;*/
+    /*border-top-left-radius: inherit;*/
+}
+
+.dxbs-calendar > .calendar-row > .calendar-view > .card-header {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.dxbs-calendar.card .btn.dxbs-month-title:hover:before, .dxbs-calendar.card .dxbs-month-title:focus:before {
+    content: " " !important;
+    position: absolute;
+    z-index: -1;
+    width: 100% !important;
+    height: 100% !important;
+    background-color: currentColor !important;
+    left: 0 !important;
+    top: 0 !important;
+    opacity: 0.1;
+}
+.dxbs-calendar.card .btn.dxbs-month-title:not(:last-child):focus:hover:before {
+    opacity: 0.2;
+}
+.dxbs-day, .calendar-clickable-cell {
+    position: relative;
+}
+.dxbs-day:not(.dxbs-today), .calendar-clickable-cell {
+    border-width: 1px !important;
+}
+.dxbs-day:not(.dxbs-day-disabled):hover:before, .calendar-clickable-cell:hover:before {
+    content: " ";
+    position: absolute;
+    z-index: 1;
+    width: calc(100% + 2px);
+    height: calc(100% + 2px);
+    background-color: currentColor;
+    left: -1px;
+    top: -1px;
+    opacity: 0.1;
+}
+.dxbs-days-header {
+    font-family: monospace;
+}
+.dxbs-calendar .calendar-view > .card-header
+{
+    padding: 0px;
+    border: 0;
+    border-radius: 0;
+}
+
+.dxbs-day.dxbs-day-disabled {
+    opacity: 0.5;
+}

@@ -1,0 +1,89 @@
+@import "_chart.legend";
+
+@keyframes dx-rotating {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+.dx-chart-title {
+    font-size: 1.5em;
+    text-align: center;
+}
+.dx-chart-subtitle {
+    font-size: 0.8em;
+    font-weight: 300;
+}
+.dx-blazor-widget .dx-chart {
+    display: inline-flex;
+    min-height: 300px;
+    overflow: hidden;
+    flex: 1 1 auto;
+}
+.dx-blazor-widget.card {
+    border-style: none;
+    flex-basis: 100%;
+}
+.dx-blazor-widget.dx-loading .dx-chart {
+    position: relative;
+}
+.dx-blazor-widget.dx-loading .dx-chart > svg {
+    visibility: hidden;
+    opacity: 0;
+}
+.dx-blazor-widget.dx-loading .dx-chart::before {
+    content: " ";
+    display: block;
+    position: absolute;
+    top: 1em;
+    left: 1em;
+    width: calc(100% - 2em);
+    height: calc(100% - 2em);
+    border-radius: 0.5em;
+    background-color: currentColor;
+    opacity: 0.025;
+}
+.dx-blazor-widget.dx-loading .dx-chart::after {
+    content: " ";
+    display: block;
+    position: absolute;
+    top: calc(50% - 2em);
+    left: calc(50% - 2em);
+    width: 4em;
+    height: 4em;
+    border-radius: 50%;
+    border: 0.2em solid currentColor;
+    border-bottom-color: transparent;
+    animation: dx-rotating 1s linear infinite;
+}
+.dx-blazor-widget > .card-body ~ .card-body {
+    padding-top: 0;
+}
+/*tooltips*/
+.dx-chart-tooltip-wrapper {
+    padding: 1em;
+}
+.dx-chart-tooltips {
+    position: absolute;
+    left: -10000px;
+    top: -10000px;
+    width: 0;
+    height: 0;
+    z-index: 1000;
+    background-color: inherit;
+}
+.dx-chart-tooltips > div {
+    position: absolute;
+    left: -10000px;
+    top: -10000px;
+    opacity: 0;
+    background-color: inherit;
+}
+.dx-chart-tooltips > div.show {
+    opacity: 1;
+}
+.dxc-tooltip {
+    z-index: 2;
+}

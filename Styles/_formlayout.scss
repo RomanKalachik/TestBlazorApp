@@ -1,0 +1,99 @@
+$valid-color: #26b050;
+$invalid-color: red;
+
+.dxbs-textbox.invalid .form-control,
+.dxbs-memo.invalid .form-control,
+.dxbs-spin-edit.invalid .form-control,
+.dxbs-combobox.invalid .form-control,
+.dxbs-date-edit.invalid .form-control,
+.dx-listbox-scrollable.invalid.form-control,
+.dx-listbox-scrollable.invalid .form-control,
+.dxbs-listbox.invalid.form-control,
+.dxbs-listbox.invalid .form-control,
+.dxbs-calendar.invalid,
+.dx-blazor-checkbox.invalid .custom-checkbox .custom-control-input + .custom-control-label::before {
+    border-color: $invalid-color;
+}
+
+.dx-blazor-checkbox.invalid {
+    & .custom-control-input:checked + .custom-control-label::before,
+    & .custom-switch .custom-control-label::before,
+    & .custom-switch .custom-control-label::after {
+        background-color: $invalid-color;
+    }
+
+    & .custom-switch .custom-control-label::before {
+        opacity: 0.5 !important;
+        border: unset;
+    }
+}
+
+.dxbs-textbox.valid.modified .form-control,
+.dxbs-memo.valid.modified .form-control,
+.dxbs-spin-edit.valid.modified .form-control,
+.dxbs-combobox.valid.modified .form-control,
+.dxbs-date-edit.valid.modified .form-control,
+.dx-listbox-scrollable.valid.modified.form-control,
+.dx-listbox-scrollable.valid.modified .form-control,
+.dxbs-listbox.valid.modified.form-control,
+.dxbs-listbox.valid.modified .form-control,
+.dxbs-calendar.valid.modified,
+.dx-blazor-checkbox.valid.modified .custom-checkbox .custom-control-input + .custom-control-label::before {
+    border-color: $valid-color;
+}
+
+.dx-blazor-checkbox.valid.modified {
+    & .custom-control-input:checked + .custom-control-label::before,
+    & .custom-switch .custom-control-label::before,
+    & .custom-switch .custom-control-label::after {
+        background-color: $valid-color;
+    }
+
+    & .custom-switch .custom-control-label::before {
+        opacity: 0.5 !important;
+        border: unset;
+    }
+}
+
+/* Blazor Validation */
+.dxbs-textbox.invalid,
+.dxbs-textbox.valid,
+.dxbs-memo.invalid,
+.dxbs-memo.valid,
+.dxbs-spin-edit.invalid,
+.dxbs-spin-edit.valid,
+.dxbs-combobox.valid,
+.dxbs-combobox.invalid,
+.dxbs-date-edit.valid,
+.dxbs-date-edit.invalid,
+.dx-listbox-scrollable.valid,
+.dx-listbox-scrollable.invalid,
+.dxbs-listbox.valid,
+.dxbs-listbox.invalid,
+.dxbs-calendar.invalid,
+.dxbs-calendar.valid,
+.dx-blazor-checkbox.valid, .dx-blazor-checkbox.invalid {
+    outline: none !important;
+}
+
+.dxbs-fl {
+    &.form-horizontal {
+        & > .row:first-child {
+            margin-top: .5rem;
+        }
+    }
+
+    .form-group {
+        margin-bottom: .5rem;
+    }
+}
+
+//editors' buttons borders conflicting with validation border
+.invalid .form-control.input-group-append.dxbs-input-group-append,
+.valid .form-control.input-group-append.dxbs-input-group-append {
+    border-color: transparent;
+}
+
+.dxbs-fl .dxbs-fl-empty-caption {
+    vertical-align: top;
+}

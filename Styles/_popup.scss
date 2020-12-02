@@ -1,0 +1,27 @@
+.dxbs-popup-scrollable {
+    .modal-content {
+        display: flex;
+        max-height: calc(100vh - 3.5rem);
+        flex-flow: column nowrap;
+        overflow-y: hidden;
+        border-width: thin;
+
+        .modal-body {
+            overflow-y: auto;
+        }
+
+        @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+            overflow-y: visible;
+            max-height: none;
+
+            .modal-body {
+                overflow-y: visible;
+            }
+        }
+    }
+}
+
+.dxbs-popup a.close-btn.oi-x {
+    color: inherit;
+    font-size: 0.725rem;
+}
