@@ -42,6 +42,24 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Include="Bases\DependencyInjection\ComponentServiceFactory.cs" />
+    <Compile Include="Bases\DependencyInjection\ServiceCollection.cs" />
+    <Compile Include="Bases\DependencyInjection\ServiceCollection.Extensions.cs" />
+    <Compile Include="Bases\DependencyInjection\ServiceProvider.cs" />
+    <Compile Include="Bases\DependencyInjection\ServiceProviderBuilder.cs" />
+    <Compile Include="Bases\DependencyInjection\Services.cs" />
+    <Compile Include="Bases\ResourceLoader.Generated.cs" />
+    <Compile Include="Bases\ResourceLoader\ApiScheme.cs" />
+    <Compile Include="Bases\ResourceLoader\DeviceInfo.cs" />
+    <Compile Include="Bases\ResourceLoader\EnvironmentInfoFactory.cs" />
+    <Compile Include="Bases\ResourceLoader\EnvironmentInfo\EnvironmentInfoBase.cs" />
+    <Compile Include="Bases\ResourceLoader\EnvironmentInfo\IEnvironmentInfo.cs" />
+    <Compile Include="Bases\ResourceLoader\EnvironmentInfo\ServerBlazorEnvironmentInfo.cs" />
+    <Compile Include="Bases\ResourceLoader\EnvironmentInfo\WasmEnvironmentInfo.cs" />
+    <Compile Include="Bases\ResourceLoader\ScriptModuleLoaders\ScriptModulesLoader.cs" />
+    <Compile Include="Bases\ResourceLoader\ScriptModuleLoaders\ScriptModulesLoaderBase.cs" />
+    <Compile Include="Bases\ResourceLoader\ScriptModuleLoaders\ServerBlazorScriptModulesLoader.cs" />
+    <Compile Include="Bases\ResourceLoader\ScriptModuleLoaders\WasmScriptModulesLoader.cs" />
     <Compile Include="Data\WeatherForecast.cs" />
     <Compile Include="Data\WeatherForecastService.cs" />
     <Compile Include="Interop\GlobalShim\Date.cs" />
@@ -123,6 +141,7 @@
     <Compile Include="Interop\viz\ScaleBreak.cs" />
     <Compile Include="Pages\Error.cshtml.cs" />
     <Compile Include="Program.cs" />
+    <Compile Include="Shared\MainLayout.razor.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
 
