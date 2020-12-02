@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace BlazorApp.Shared
 {
-    public partial class MainLayout
+    public partial class CounterCompnent : ComponentBase
     {
         [Inject] protected IEnvironmentInfo EnvironmentInfo { get; set; }
         readonly Guid _uniqueId = Guid.NewGuid();
@@ -14,14 +14,17 @@ namespace BlazorApp.Shared
         {
             base.OnInitialized();
         }
-        //protected sealed override void BuildRenderTree(RenderTreeBuilder builder)
-        //{
-        //    builder.AddContent(0, BeforeBuildRenderTree);
-        //}
+        protected sealed override void BuildRenderTree(RenderTreeBuilder builder)
+        {
+            BeforeBuildRenderTree(builder);
+        }
         protected virtual void BeforeBuildRenderTree(RenderTreeBuilder builder)
         {
             EnvironmentInfo.RenderScriptLoader(builder, _uniqueId);
-            builder.CloseComponent();
+
+            builder.OpenElement(0, "div");
+            builder.AddContent(1, "some test");
+            builder.CloseElement();
         }
     }
 }

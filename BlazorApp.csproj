@@ -139,6 +139,7 @@
     <Compile Include="Interop\viz\PieChartSeries.cs" />
     <Compile Include="Interop\viz\PolarChartSeries.cs" />
     <Compile Include="Interop\viz\ScaleBreak.cs" />
+    <Compile Include="Pages\CounterCompnent.cs" />
     <Compile Include="Pages\Error.cshtml.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Shared\MainLayout.razor.cs" />
