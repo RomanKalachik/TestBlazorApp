@@ -10,18 +10,16 @@ namespace BlazorApp.Shared
     {
         [Inject] protected IEnvironmentInfo EnvironmentInfo { get; set; }
         readonly Guid _uniqueId = Guid.NewGuid();
-        protected override void OnInitialized()
-        {
-            base.OnInitialized();
-        }
-        //protected sealed override void BuildRenderTree(RenderTreeBuilder builder)
-        //{
-        //    builder.AddContent(0, BeforeBuildRenderTree);
-        //}
         protected virtual void BeforeBuildRenderTree(RenderTreeBuilder builder)
         {
             EnvironmentInfo.RenderScriptLoader(builder, _uniqueId);
-            builder.CloseComponent();
+        }
+    }
+    public class MainLayoutEx : MainLayout {
+        protected override void BuildRenderTree(RenderTreeBuilder __builder)
+        {
+            BeforeBuildRenderTree(__builder);
+            base.BuildRenderTree(__builder);
         }
     }
 }

@@ -1,7 +1,9 @@
+import Dom from "./dom-utils";
 import Charts from "./charts";
 import Funnel from "./funnel";
 
-
 export default {
-    Charts, Funnel
+    Dom,
+    Charts,
+    Funnel
 };

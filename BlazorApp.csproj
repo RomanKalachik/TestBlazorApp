@@ -63,5 +63,11 @@
     <Content Include="*.xml" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Update="Scripts\funnel.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
 
 </Project>

@@ -6,7 +6,7 @@ export function DxBlazorInternal(host, container, lookup, userAgent, alias) {
         if(!host[name]) Object.defineProperty(host, name, { value: v });
     }
     defineGlobalAlias(alias, function DxBlazor(dotNetRef, folder, apiGatewayName) {
-        return new Promise(function(resolve) {
+	return new Promise(function(resolve) {
             resolve({
                 isMobileDevice: /(cpu iphone os)|(Android)/i.test(userAgent),
                 isTablet: /(ipad)/i.test(userAgent)
