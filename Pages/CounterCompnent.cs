@@ -10,10 +10,6 @@ namespace BlazorApp.Shared
     {
         [Inject] protected IEnvironmentInfo EnvironmentInfo { get; set; }
         readonly Guid _uniqueId = Guid.NewGuid();
-        protected override void OnInitialized()
-        {
-            base.OnInitialized();
-        }
         protected sealed override void BuildRenderTree(RenderTreeBuilder builder)
         {
             BeforeBuildRenderTree(builder);

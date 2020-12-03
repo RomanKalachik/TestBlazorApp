@@ -72,7 +72,7 @@ namespace DevExpress.Blazor.Internal {
         }
 
         public string ResolveUrl(string resourceUrl) {
-            resourceUrl = _navigationManager.BaseUri + "_content/DevExpress.Blazor" + resourceUrl;
+            resourceUrl = _navigationManager.BaseUri + resourceUrl;
             resourceUrl = _navigationManager.ToBaseRelativePath(resourceUrl);
             return _navigationManager.ToAbsoluteUri(resourceUrl).PathAndQuery;
         }

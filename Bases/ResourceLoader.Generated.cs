@@ -3,8 +3,8 @@ namespace DevExpress.Blazor.Internal {
     public abstract partial class ScriptModulesLoaderBase {
         partial void AddScriptLoaderQueryParts(StringBuilder sb) {
             sb.Append("?version=");
-            sb.Append("cjse1623b9c.js");
-            sb.Append("esmd587fb6a.js");
+            sb.Append("cjs32f21716.js");
+            sb.Append("esmd67ba9c3.js");
         }
     }
 }

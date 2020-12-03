@@ -8,3 +8,5 @@ appsettings.*.json
 published
 nuget-packages
 /.cr/personal/FavoritesList
+/.vscode
+/wwwroot
