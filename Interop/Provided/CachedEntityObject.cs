@@ -1,43 +1,24 @@
-using System.Collections.Generic;
-using DevExpress.Blazor.Interop.Internal;
 using Microsoft.JSInterop;
 using Microsoft.JSInterop.WebAssembly;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 //TODO refactor this ex EventHorizon.Blazor.Interop
-namespace DevExpress.Blazor.Interop.Internal {
+namespace DevExpress.Blazor.Interop.Internal
+{
     [JsonConverter(typeof(CachedEntityConverter<CachedEntity>))]
-    class CachedEntity : ICachedEntity {
+    class CachedEntity : ICachedEntity
+    {
         /// <inheritdoc />
         public string ___guid { get; set; }
     }
-class CachedEntityObject : CachedEntity
-{
-    protected static readonly IDictionary<string, ICachedEntity> CachedEntityMap = new Dictionary<string, ICachedEntity>();
-    protected readonly DotNetObjectReference<CachedEntityObject> _invokableReference;
-    protected IDictionary<string, ICachedEntity> _cachedEntityMap = new Dictionary<string, ICachedEntity>();
-
-    public CachedEntityObject()
-    {
-        _invokableReference = DotNetObjectReference.Create(
-            this
-        );
-    }
-    public CachedEntityObject(
-        ICachedEntity entity
-    )
-    {
-        ___guid = entity.___guid;
-        _invokableReference = DotNetObjectReference.Create(
-            this
-        );
-    }
-}
 
     class CachedEntityConverter<T>
-      : JsonConverter<T> where T : CachedEntity {
+      : JsonConverter<T> where T : CachedEntity
+    {
         /// <inheritdoc />
         public override bool CanConvert(Type typeToConvert) =>
             typeof(T).IsAssignableFrom(typeToConvert);
@@ -46,21 +27,26 @@ class CachedEntityObject : CachedEntity
             ref Utf8JsonReader reader,
             Type typeToConvert,
             JsonSerializerOptions options
-        ) {
+        )
+        {
             T entity = (T)Activator.CreateInstance(typeToConvert);
 
-            while(reader.Read()) {
-                if(reader.TokenType == JsonTokenType.EndObject) {
+            while (reader.Read())
+            {
+                if (reader.TokenType == JsonTokenType.EndObject)
+                {
                     return entity;
                 }
 
-                if(reader.TokenType == JsonTokenType.PropertyName) {
+                if (reader.TokenType == JsonTokenType.PropertyName)
+                {
                     string propertyName = reader.GetString();
                     reader.Read();
-                    switch(propertyName) {
+                    switch (propertyName)
+                    {
                         case "___guid":
-                        entity.___guid = reader.GetString();
-                        break;
+                            entity.___guid = reader.GetString();
+                            break;
                     }
                 }
             }
@@ -71,16 +57,46 @@ class CachedEntityObject : CachedEntity
             Utf8JsonWriter writer,
             T value,
             JsonSerializerOptions options
-        ) {
+        )
+        {
             writer.WriteStartObject();
-
             writer.WriteString("___guid", value.___guid);
-
+         //   IEnumerable<Tuple<string, object>> values =
+         //          (from property in typeof(T).GetProperties(System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Instance)
+         //           where property.CanRead &&
+         //property.CanWrite
+         //           select new Tuple<string, object>(property.Name,
+         //                              property.GetValue(value)));
+         //   foreach (var val in values)
+         //       writer.WriteString(val.Item1, val.Item2.ToString());
             writer.WriteEndObject();
         }
     }
 
-    static class EventHorizonBlazorInterop {
+    class CachedEntityObject : CachedEntity
+    {
+        protected static readonly IDictionary<string, ICachedEntity> CachedEntityMap = new Dictionary<string, ICachedEntity>();
+        protected IDictionary<string, ICachedEntity> _cachedEntityMap = new Dictionary<string, ICachedEntity>();
+        protected readonly DotNetObjectReference<CachedEntityObject> _invokableReference;
+        public CachedEntityObject()
+        {
+            _invokableReference = DotNetObjectReference.Create(
+                this
+            );
+        }
+        public CachedEntityObject(
+            ICachedEntity entity
+        )
+        {
+            ___guid = entity.___guid;
+            _invokableReference = DotNetObjectReference.Create(
+                this
+            );
+        }
+    }
+
+    static class EventHorizonBlazorInterop
+    {
         /// <summary>
         /// This will call the identifier, from window, and attached a callback function to it.
         /// <br />
@@ -99,7 +115,8 @@ class CachedEntityObject : CachedEntity
             string identifier,
             string assemblyName,
             string referenceCallback
-        ) {
+        )
+        {
             return JSRuntime.InvokeVoidAsync(
                 "blazorInterop.assemblyFuncCallback",
                 identifier,
@@ -117,7 +134,8 @@ class CachedEntityObject : CachedEntity
         public static ICachedEntity cacheEntity(
             string identifier,
             string prop
-        ) {
+        )
+        {
             return RUNTIME.Invoke<CachedEntity>(
                 "blazorInterop.cacheEntity",
                 identifier,
@@ -143,7 +161,8 @@ class CachedEntityObject : CachedEntity
         /// <param name="args"></param>
         public static void Call(
             params object[] args
-        ) {
+        )
+        {
             RUNTIME.InvokeVoid(
                 "blazorInterop.call",
                 args
@@ -174,7 +193,8 @@ class CachedEntityObject : CachedEntity
         /// <returns>The result of the function call.</returns>
         public static T Func<T>(
             params object[] args
-        ) {
+        )
+        {
             return RUNTIME.Invoke<T>(
                 "blazorInterop.func",
                 args
@@ -205,7 +225,8 @@ class CachedEntityObject : CachedEntity
         /// <returns>The primitive array result of the function call.</returns>
         public static T[] FuncArray<T>(
             params object[] args
-        ) {
+        )
+        {
             return RUNTIME.Invoke<T[]>(
                 "blazorInterop.funcArray",
                 args
@@ -239,14 +260,16 @@ class CachedEntityObject : CachedEntity
         public static T[] FuncArrayClass<T>(
             Func<ICachedEntity, T> classBuilder,
             params object[] args
-        ) {
+        )
+        {
             string[] results = RUNTIME.Invoke<string[]>(
                 "blazorInterop.funcArrayClass",
                 args
             );
             T[] array = new T[results.Length];
             int index = 0;
-            foreach(string result in results) {
+            foreach (string result in results)
+            {
                 array[index] = classBuilder(new CachedEntity { ___guid = result });
                 index++;
             }
@@ -270,7 +293,8 @@ class CachedEntityObject : CachedEntity
             string funcCallbackName,
             string referenceMethod,
             DotNetObjectReference<T> invokableReference
-        ) where T : class {
+        ) where T : class
+        {
             return JSRuntime.InvokeVoidAsync(
                 "blazorInterop.funcCallback",
                 entity.___guid,
@@ -307,7 +331,8 @@ class CachedEntityObject : CachedEntity
         public static T FuncClass<T>(
             Func<ICachedEntity, T> classBuilder,
             params object[] args
-        ) {
+        )
+        {
             string cacheKey = RUNTIME.Invoke<string>(
                 "blazorInterop.funcClass",
                 args
@@ -341,7 +366,8 @@ class CachedEntityObject : CachedEntity
         public static T Get<T>(
             string root,
             string prop
-        ) {
+        )
+        {
             string result = (RUNTIME).InvokeUnmarshalled<ValueTuple<string, string>, string>(
                 "blazorInterop.get",
                 ValueTuple.Create(
@@ -349,7 +375,8 @@ class CachedEntityObject : CachedEntity
                     prop
                 )
             );
-            if(result == null) {
+            if (result == null)
+            {
                 return default;
             }
             return (T)Convert.ChangeType(
@@ -384,7 +411,8 @@ class CachedEntityObject : CachedEntity
         public static T[] GetArray<T>(
             string root,
             string prop
-        ) {
+        )
+        {
             return RUNTIME.Invoke<T[]>(
                 "blazorInterop.getArraySlow",
                 root,
@@ -421,7 +449,8 @@ class CachedEntityObject : CachedEntity
             string root,
             string prop,
             Func<ICachedEntity, T> classBuilder
-        ) {
+        )
+        {
             string[] results = RUNTIME.Invoke<string[]>(
                 "blazorInterop.getArrayClassSlow",
                 root,
@@ -429,7 +458,8 @@ class CachedEntityObject : CachedEntity
             );
             T[] array = new T[results.Length];
             int index = 0;
-            foreach(string result in results) {
+            foreach (string result in results)
+            {
                 array[index] = classBuilder(new CachedEntity { ___guid = result });
                 index++;
             }
@@ -468,7 +498,8 @@ class CachedEntityObject : CachedEntity
             string root,
             string prop,
             Func<ICachedEntity, T> classBuilder
-        ) {
+        )
+        {
             string result = (RUNTIME).InvokeUnmarshalled<ValueTuple<string, string>, string>(
                 "blazorInterop.getClass",
                 ValueTuple.Create(
@@ -512,7 +543,8 @@ class CachedEntityObject : CachedEntity
         /// <returns>Client side cached entity created on client.</returns>
         public static ICachedEntity New(
             params object[] args
-        ) {
+        )
+        {
             return RUNTIME.Invoke<CachedEntity>(
                 "blazorInterop.new",
                 args
@@ -535,10 +567,12 @@ class CachedEntityObject : CachedEntity
             string methodName,
             string script,
             object args
-        ) {
+        )
+        {
             return JSRuntime.InvokeVoidAsync(
                 "blazorInterop.runScript",
-                new JavaScriptMethodRunner {
+                new JavaScriptMethodRunner
+                {
                     MethodName = methodName,
                     Script = script,
                     Args = args
@@ -556,7 +590,8 @@ class CachedEntityObject : CachedEntity
             string root,
             string identifier,
             object value
-        ) {
+        )
+        {
             JSRuntime.InvokeVoidAsync(
                 "blazorInterop.set",
                 root,
@@ -591,7 +626,8 @@ class CachedEntityObject : CachedEntity
         /// <returns>The result of the Promise call.</returns>
         public static ValueTask<T> Task<T>(
             params object[] args
-        ) {
+        )
+        {
             return RUNTIME.InvokeAsync<T>(
                 "blazorInterop.task",
                 args
@@ -624,7 +660,8 @@ class CachedEntityObject : CachedEntity
         /// <returns>The Array result of the Promise call.</returns>
         public static ValueTask<T[]> TaskArray<T>(
             params object[] args
-        ) {
+        )
+        {
             return RUNTIME.InvokeAsync<T[]>(
                 "blazorInterop.taskArray",
                 args
@@ -660,14 +697,16 @@ class CachedEntityObject : CachedEntity
         public static async ValueTask<T[]> TaskArrayClass<T>(
             Func<ICachedEntity, T> classBuilder,
             params object[] args
-        ) {
+        )
+        {
             string[] results = await RUNTIME.InvokeAsync<string[]>(
                 "blazorInterop.taskArrayClass",
                 args
             );
             T[] array = new T[results.Length];
             int index = 0;
-            foreach(string result in results) {
+            foreach (string result in results)
+            {
                 array[index] = classBuilder(new CachedEntity { ___guid = result });
                 index++;
             }
@@ -704,7 +743,8 @@ class CachedEntityObject : CachedEntity
         public static async ValueTask<T> TaskClass<T>(
             Func<ICachedEntity, T> classBuilder,
             params object[] args
-        ) {
+        )
+        {
             string cacheKey = await RUNTIME.InvokeAsync<string>(
                 "blazorInterop.taskClass",
                 args
@@ -721,15 +761,18 @@ class CachedEntityObject : CachedEntity
         /// </summary>
         public static WebAssemblyJSRuntime RUNTIME => JSRuntime as WebAssemblyJSRuntime;
     }
-    struct JavaScriptMethodRunner {
+    struct JavaScriptMethodRunner
+    {
         public object Args { get; set; }
         public string MethodName { get; set; }
         public string Script { get; set; }
     }
-    interface ICachedEntity {
+    interface ICachedEntity
+    {
         string ___guid { get; set; }
     }
 }
-namespace DevExpress.Blazor.Interop.Internal.Callbacks {
+namespace DevExpress.Blazor.Interop.Internal.Callbacks
+{
 }
 

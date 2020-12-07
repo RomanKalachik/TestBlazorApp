@@ -8735,6 +8735,10 @@ button.dxbs-edit-btn.dxbs-clear-btn {
   background: none;
 }
 
+.dx-theme-marker {
+  font-family: "dx.generic.light";
+}
+
 .dxbs-dropdown-toggle.dropdown-toggle.dxbs-spin-edit-toggle::after {
   margin-bottom: 0.2em;
 }

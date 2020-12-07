@@ -40,6 +40,7 @@ function updateRelatedWidget(domEl, settings, setupFunc) {
     
 }
 function init(mainElement, opt, dotnetHelper) {
+    debugger;
     return createRelatedWidget(mainElement, opt, function (opt, widgetBuilder) {
         
     })
