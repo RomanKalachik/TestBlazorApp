@@ -8,3 +8,11 @@
         </LayoutView>
     </NotFound>
 </Router>
+@code {
+    [Inject]
+    public IJSRuntime JSRuntime { get; set; }
+
+    protected override void OnInitialized() {
+        DevExpress.Blazor.Interop.Internal.EventHorizonBlazorInterop.JSRuntime = JSRuntime;
+    }
+}

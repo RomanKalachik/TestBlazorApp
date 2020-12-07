@@ -26,14 +26,8 @@
         <PropertyGroup>
            <DxCreateStaticHash Condition="!Exists('$(ProjectDir)Bases\ResourceLoader.Generated.cs')">True</DxCreateStaticHash>
         </PropertyGroup>
-        <Exec Command="&quot;$(NodeJsPath)&quot; resources.build.js configName=$(Configuration)"/>
         <ItemGroup Condition="'$(DxCreateStaticHash)' == 'True'">
             <Compile Include="$(ProjectDir)Bases\ResourceLoader.Generated.cs" AutoGen="true" />
         </ItemGroup>
-    </Target>
-    <Target Name="DxPreBuildEvent" BeforeTargets="PreBuildEvent"
-            Condition="Exists('resources.build.js')">
-        <Message Text="DxPreBuild $(TargetFrameworks) $(Configuration)" Importance="High" />
-        <CallTarget Targets="RestoreNpm; BuildStaticResources;"  Condition="'$(SkipStaticContentRestore)' == 'False'" />
     </Target>
 </Project>

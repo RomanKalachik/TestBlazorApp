@@ -1,11 +1,12 @@
-﻿import { ensureElement, toggleCssClass } from "./dom-utils";
+﻿//import DevExpress from "./external/devexpress.viz.js";
+import { ensureElement, toggleCssClass } from "./dom-utils";
 
 class FunnelData {
     constructor(domElement, widget) {
         this.widget = widget;
         this.chartElement = FunnelData.getChartElement(domElement);
     }
-    static getChartElement(domElement) {
+    static getElement(domElement) {
         return domElement.querySelector(".dx-funnel");
     }
 }
@@ -21,31 +22,24 @@ function disposeWidget(domEl, disposeDomEl) {
     return Promise.resolve("ok");
 }
 
-export function createWidgetBuilder(DxBlazorViz, hostElement, state, callback) {
-    const widgetClass = DxBlazorViz.viz.dxFunnel;
-    return function builder(options) {
-        callback(new widgetClass(hostElement, options));
-    };
+export function createWidgetBuilder(DxBlazorViz, hostElement, state) {
+    console.log(state);
+    new DxBlazorViz.viz.dxFunnel(hostElement, state);
+
 }
 function createRelatedWidget(domEl, state, setupFunc) {
     const widgetReady = new Promise(function (resolve) {
         import("devexpress.viz").then(function (DxBlazorViz) {
-            const widgetBuilder = createWidgetBuilder(DxBlazorViz, FunnelData.getChartElement(domEl), state, resolve);
+            const widgetBuilder = createWidgetBuilder(DxBlazorViz, FunnelData.getElement(domEl));
             setupFunc(state, widgetBuilder);
         });
     });
     return widgetReady;
 }
-function updateRelatedWidget(domEl, settings, setupFunc) {
-    
-}
 function init(mainElement, opt, dotnetHelper) {
-    debugger;
-    return createRelatedWidget(mainElement, opt, function (opt, widgetBuilder) {
-        
-    })
-        .then(function () { return Promise.resolve("ok"); })
-        .catch(function (r) { window.console.error(r); });
+    import("devexpress.viz").then(function (DxBlazorViz) {
+        createWidgetBuilder(DxBlazorViz, mainElement, opt);
+    });
 }
 function dispose(mainElement) {
     mainElement = ensureElement(mainElement);

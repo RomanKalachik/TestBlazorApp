@@ -500,7 +500,7 @@ namespace DevExpress.Blazor.Interop.Internal
             Func<ICachedEntity, T> classBuilder
         )
         {
-            string result = (RUNTIME).InvokeUnmarshalled<ValueTuple<string, string>, string>(
+            string result = RUNTIME.InvokeUnmarshalled<ValueTuple<string, string>, string>(
                 "blazorInterop.getClass",
                 ValueTuple.Create(
                     root,
